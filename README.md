@@ -56,3 +56,15 @@ class FoldingCellSimpleDemo extends StatelessWidget {
 }
 ```
 
+## Examples
+
+[example](https://github.com/faob-dev/folding_cell/tree/master/example) project contains these two demos
+
+### Demo 1 - FoldingCell inside Container
+![alt tag](https://raw.githubusercontent.com/faob-dev/folding_cell/master/screenshots/fc_demo1.gif)
+
+### Demo 2 - FoldingCell inside ListView
+![alt tag](https://raw.githubusercontent.com/faob-dev/folding_cell/master/screenshots/fc_demo2.gif)
+
+## Bugs/Requests
+Reporting issues and requests for new features are always welcome.
