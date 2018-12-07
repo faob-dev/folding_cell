@@ -2,7 +2,7 @@
 
 Simple folding cell widget implemented in Flutter. Its a widget so add it to any container widget as a child.
 
-[![pub package](https://img.shields.io/pub/v/folding_cell.svg)](https://img.shields.io/pub/v/folding_cell.svg)
+[![pub package](https://img.shields.io/pub/v/folding_cell.svg)](https://pub.dartlang.org/packages/folding_cell)
 
 ## Installation
 
