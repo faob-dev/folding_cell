@@ -12,7 +12,7 @@ dependencies:
   folding_cell: "^0.1.0"
 ```
 
-Import in your project
+Import in your project:
 ```dart
 import 'package:folding_cell/folding_cell.dart';
 ```
