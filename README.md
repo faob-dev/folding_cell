@@ -4,8 +4,6 @@ Simple folding cell widget implemented in Flutter. Its a widget so add it to any
 
 [![pub package](https://img.shields.io/pub/v/folding_cell.svg)](https://img.shields.io/pub/v/folding_cell.svg)
 
-<a href="https://www.buymeacoffee.com/OVQoKHw7q" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
-
 ## Installation
 
 Add dependency in `pubspec.yaml`:
@@ -72,3 +70,6 @@ class FoldingCellSimpleDemo extends StatelessWidget {
 
 ## Bugs/Requests
 Reporting issues and requests for new features are always welcome.
+
+
+<a href="https://www.buymeacoffee.com/OVQoKHw7q" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
