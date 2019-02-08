@@ -9,7 +9,7 @@ Simple folding cell widget implemented in Flutter. Its a widget so add it to any
 Add dependency in `pubspec.yaml`:
 ```yaml
 dependencies:
-  folding_cell: "^0.1.0"
+  folding_cell: "^0.1.1"
 ```
 
 Import in your project:
