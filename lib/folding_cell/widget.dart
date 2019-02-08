@@ -10,7 +10,9 @@ class SimpleFoldingCell extends StatefulWidget {
     this.cellSize = const Size(100.0, 100.0),
     this.unfoldCell = false,
     this.skipAnimation = false,
-    this.padding = const EdgeInsets.only(left: 20, right: 20, bottom: 5, top: 10)})
+    this.padding = const EdgeInsets.only(left: 20, right: 20, bottom: 5, top: 10),
+    this.animationDuration = const Duration(milliseconds: 500)
+  })
       : assert(frontWidget != null),
         assert(innerTopWidget != null),
         assert(innerBottomWidget != null),
@@ -41,6 +43,9 @@ class SimpleFoldingCell extends StatefulWidget {
   /// Padding around cell
   final EdgeInsetsGeometry padding;
 
+  /// Animation duration
+  final Duration animationDuration;
+
   @override
   _SimpleFoldingCellState createState() => _SimpleFoldingCellState();
 }
@@ -62,7 +67,7 @@ class _SimpleFoldingCellState extends State<SimpleFoldingCell> with SingleTicker
     }
 
     if(!widget.skipAnimation) {
-      _animationController = AnimationController(vsync: this, duration: Duration(milliseconds: 500));
+      _animationController = AnimationController(vsync: this, duration: widget.animationDuration);
 
       _animationController.value = 0;
       if(widget.unfoldCell)
