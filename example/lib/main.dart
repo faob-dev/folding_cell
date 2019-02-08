@@ -58,5 +58,6 @@ Widget _buildCell(BuildContext context, int index) {
     cellSize: Size(MediaQuery.of(context).size.width, 125),
     padding: EdgeInsets.all(15),
     animationDuration: Duration(milliseconds: 300),
+    borderRadius: 10,
   );
 }

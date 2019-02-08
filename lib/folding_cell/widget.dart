@@ -11,15 +11,17 @@ class SimpleFoldingCell extends StatefulWidget {
     this.unfoldCell = false,
     this.skipAnimation = false,
     this.padding = const EdgeInsets.only(left: 20, right: 20, bottom: 5, top: 10),
-    this.animationDuration = const Duration(milliseconds: 500)
-  })
-      : assert(frontWidget != null),
+    this.animationDuration = const Duration(milliseconds: 500),
+    this.borderRadius = 0.0
+  }): assert(frontWidget != null),
         assert(innerTopWidget != null),
         assert(innerBottomWidget != null),
         assert(cellSize != null),
         assert(unfoldCell != null),
         assert(skipAnimation != null),
         assert(padding != null),
+        assert(animationDuration != null),
+        assert(borderRadius != null && borderRadius >= 0.0),
         super(key: key);
 
   // Front widget in folded cell
@@ -45,6 +47,9 @@ class SimpleFoldingCell extends StatefulWidget {
 
   /// Animation duration
   final Duration animationDuration;
+
+  /// Rounded border radius
+  final double borderRadius;
 
   @override
   _SimpleFoldingCellState createState() => _SimpleFoldingCellState();
@@ -101,11 +106,14 @@ class _SimpleFoldingCellState extends State<SimpleFoldingCell> with SingleTicker
           width: widget.cellSize.width,
           child: Stack(
             children: <Widget>[
-              Container(
-                height: widget.cellSize.height,
-                width: widget.cellSize.width,
+              ClipRRect(
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(widget.borderRadius), topRight: Radius.circular(widget.borderRadius)),
+                child: Container(
+                  height: widget.cellSize.height,
+                  width: widget.cellSize.width,
 //                color: Color(0xFFff9234),
-                child: widget.innerTopWidget,
+                  child: widget.innerTopWidget,
+                ),
               ),
               Transform(
                 alignment: Alignment.bottomCenter,
@@ -115,11 +123,14 @@ class _SimpleFoldingCellState extends State<SimpleFoldingCell> with SingleTicker
                 child: Transform(
                   alignment: Alignment.center,
                   transform: Matrix4.rotationX(math.pi),
-                  child: Container(
-                    height: widget.cellSize.height,
-                    width: widget.cellSize.width,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.only(bottomLeft: Radius.circular(widget.borderRadius), bottomRight: Radius.circular(widget.borderRadius)),
+                    child: Container(
+                      height: widget.cellSize.height,
+                      width: widget.cellSize.width,
 //                    color: Color(0xFFecf2f9),
-                    child: widget.innerBottomWidget,
+                      child: widget.innerBottomWidget,
+                    ),
                   ),
                 ),
               ),
@@ -130,11 +141,14 @@ class _SimpleFoldingCellState extends State<SimpleFoldingCell> with SingleTicker
                   ..rotateX(angle)),
                 child: Opacity(
                   opacity: angle >= 1.5708 ? 0.0 : 1.0,
-                  child: Container(
-                    height: angle >= 1.5708 ? 0.0 : widget.cellSize.height,
-                    width: angle >= 1.5708 ? 0.0 : widget.cellSize.width,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(widget.borderRadius), topRight: Radius.circular(widget.borderRadius)),
+                    child: Container(
+                      height: angle >= 1.5708 ? 0.0 : widget.cellSize.height,
+                      width: angle >= 1.5708 ? 0.0 : widget.cellSize.width,
 //                    color: Color(0xFFffcd3c),
-                    child: widget.frontWidget,
+                      child: widget.frontWidget,
+                    ),
                   ),
                 ),
               ),
