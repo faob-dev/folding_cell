@@ -1,6 +1,6 @@
 name: folding_cell
 description:  Simple folding cell widget implemented in Flutter. Its a widget so add it to any container widget as a child.
-version: 0.1.1
+version: 0.1.2
 author: FaoB <faob.dev@gmail.com>
 homepage: https://github.com/faob-dev/folding_cell
 
