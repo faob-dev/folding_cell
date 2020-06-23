@@ -1,5 +1,8 @@
+## 1.0.0
+* Added `SimpleFoldingCell.create()` to pass `frontWidget` and `innerWidget`
+
 ## 0.1.2
-* Added `onOpen` and `onClose` callbacks <br/>
+* Added `onOpen` and `onClose` callbacks
 * Can now programmatically open and close cell
 * Added `AnimatedBuilder` instead of `setState()` and simplified code
 * Updated examples
