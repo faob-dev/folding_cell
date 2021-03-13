@@ -1,3 +1,6 @@
+## 1.0.1
+* Migrated to non-nullable types
+
 ## 1.0.0
 * Added `SimpleFoldingCell.create()` to pass `frontWidget` and `innerWidget`
 

@@ -1,10 +1,10 @@
 name: folding_cell
-description:  Simple folding cell widget implemented in Flutter. Its a widget so add it to any container widget as a child.
-version: 1.0.0
+description:  Simple folding cell widget, pass two widgets to fold and unfold.
+version: 1.0.1
 homepage: https://github.com/faob-dev/folding_cell
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   flutter:

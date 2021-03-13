@@ -4,11 +4,12 @@ import 'package:flutter/material.dart';
 
 /// Folding Cell Widget
 class SimpleFoldingCell extends StatefulWidget {
+  @Deprecated('Use SimpleFoldingCell.create instead.')
   SimpleFoldingCell(
-      {Key key,
-      @required this.frontWidget,
-      @required this.innerTopWidget,
-      @required this.innerBottomWidget,
+      {Key? key,
+      required this.frontWidget,
+      required this.innerTopWidget,
+      required this.innerBottomWidget,
       this.cellSize = const Size(100.0, 100.0),
       this.unfoldCell = false,
       this.skipAnimation = false,
@@ -31,9 +32,9 @@ class SimpleFoldingCell extends StatefulWidget {
         super(key: key);
 
   SimpleFoldingCell.create(
-      {Key key,
-      @required this.frontWidget,
-      @required this.innerWidget,
+      {Key? key,
+      required this.frontWidget,
+      required this.innerWidget,
       this.cellSize = const Size(100.0, 100.0),
       this.unfoldCell = false,
       this.skipAnimation = false,
@@ -56,16 +57,16 @@ class SimpleFoldingCell extends StatefulWidget {
         super(key: key);
 
   // Front widget in folded cell
-  final Widget frontWidget;
+  final Widget? frontWidget;
 
   /// Top Widget in unfolded cell
-  final Widget innerTopWidget;
+  final Widget? innerTopWidget;
 
   /// Bottom Widget in unfolded cell
-  final Widget innerBottomWidget;
+  final Widget? innerBottomWidget;
 
   /// Inner widget in unfolded cell
-  final Widget innerWidget;
+  final Widget? innerWidget;
 
   /// Size of cell
   final Size cellSize;
@@ -86,10 +87,10 @@ class SimpleFoldingCell extends StatefulWidget {
   final double borderRadius;
 
   /// Called when cell fold animations completes
-  final VoidCallback onOpen;
+  final VoidCallback? onOpen;
 
   /// Called when cell unfold animations completes
-  final VoidCallback onClose;
+  final VoidCallback? onClose;
 
   @override
   SimpleFoldingCellState createState() => SimpleFoldingCellState();
@@ -98,7 +99,7 @@ class SimpleFoldingCell extends StatefulWidget {
 class SimpleFoldingCellState extends State<SimpleFoldingCell>
     with SingleTickerProviderStateMixin {
   bool _isExpanded = false;
-  AnimationController _animationController;
+  late AnimationController _animationController;
 
   @override
   void initState() {
@@ -108,9 +109,9 @@ class SimpleFoldingCellState extends State<SimpleFoldingCell>
         AnimationController(vsync: this, duration: widget.animationDuration);
     _animationController.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
-        if (widget.onOpen != null) widget.onOpen();
+        if (widget.onOpen != null) widget.onOpen!();
       } else if (status == AnimationStatus.dismissed) {
-        if (widget.onClose != null) widget.onClose();
+        if (widget.onClose != null) widget.onClose!();
       }
     });
 
@@ -122,7 +123,7 @@ class SimpleFoldingCellState extends State<SimpleFoldingCell>
 
   @override
   void dispose() {
-    _animationController?.dispose();
+    _animationController.dispose();
     super.dispose();
   }
 
