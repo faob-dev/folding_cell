@@ -1,3 +1,6 @@
+## 1.0.2
+* Removed default constructor and some cleanup
+
 ## 1.0.1
 * Migrated to non-nullable types
 

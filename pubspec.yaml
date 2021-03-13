@@ -1,6 +1,6 @@
 name: folding_cell
-description:  Simple folding cell widget, pass two widgets to fold and unfold.
-version: 1.0.1
+description:  Simple folding cell widget, pass frontWidget and innerWidget to fold and unfold.
+version: 1.0.2
 homepage: https://github.com/faob-dev/folding_cell
 
 environment:

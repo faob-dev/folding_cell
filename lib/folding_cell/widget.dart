@@ -4,33 +4,6 @@ import 'package:flutter/material.dart';
 
 /// Folding Cell Widget
 class SimpleFoldingCell extends StatefulWidget {
-  @Deprecated('Use SimpleFoldingCell.create instead.')
-  SimpleFoldingCell(
-      {Key? key,
-      required this.frontWidget,
-      required this.innerTopWidget,
-      required this.innerBottomWidget,
-      this.cellSize = const Size(100.0, 100.0),
-      this.unfoldCell = false,
-      this.skipAnimation = false,
-      this.padding =
-          const EdgeInsets.only(left: 20, right: 20, bottom: 5, top: 10),
-      this.animationDuration = const Duration(milliseconds: 500),
-      this.borderRadius = 0.0,
-      this.onOpen,
-      this.onClose})
-      : assert(frontWidget != null),
-        assert(innerTopWidget != null),
-        assert(innerBottomWidget != null),
-        assert(cellSize != null),
-        assert(unfoldCell != null),
-        assert(skipAnimation != null),
-        assert(padding != null),
-        assert(animationDuration != null),
-        assert(borderRadius != null && borderRadius >= 0.0),
-        innerWidget = null,
-        super(key: key);
-
   SimpleFoldingCell.create(
       {Key? key,
       required this.frontWidget,
@@ -52,39 +25,31 @@ class SimpleFoldingCell extends StatefulWidget {
         assert(padding != null),
         assert(animationDuration != null),
         assert(borderRadius != null && borderRadius >= 0.0),
-        innerTopWidget = null,
-        innerBottomWidget = null,
         super(key: key);
 
   // Front widget in folded cell
   final Widget? frontWidget;
 
-  /// Top Widget in unfolded cell
-  final Widget? innerTopWidget;
-
-  /// Bottom Widget in unfolded cell
-  final Widget? innerBottomWidget;
-
   /// Inner widget in unfolded cell
   final Widget? innerWidget;
 
   /// Size of cell
-  final Size cellSize;
+  final Size? cellSize;
 
   /// If true cell will be unfolded when created, if false cell will be folded when created
-  final bool unfoldCell;
+  final bool? unfoldCell;
 
   /// If true cell will fold and unfold without animation, if false cell folding and unfolding will be animated
-  final bool skipAnimation;
+  final bool? skipAnimation;
 
   /// Padding around cell
-  final EdgeInsetsGeometry padding;
+  final EdgeInsetsGeometry? padding;
 
   /// Animation duration
-  final Duration animationDuration;
+  final Duration? animationDuration;
 
   /// Rounded border radius
-  final double borderRadius;
+  final double? borderRadius;
 
   /// Called when cell fold animations completes
   final VoidCallback? onOpen;
@@ -115,7 +80,7 @@ class SimpleFoldingCellState extends State<SimpleFoldingCell>
       }
     });
 
-    if (widget.unfoldCell) {
+    if (widget.unfoldCell == true) {
       _animationController.value = 1;
       _isExpanded = true;
     }
@@ -133,38 +98,36 @@ class SimpleFoldingCellState extends State<SimpleFoldingCell>
         animation: _animationController,
         builder: (context, child) {
           final angle = _animationController.value * pi;
-          final cellWidth = widget.cellSize.width;
-          final cellHeight = widget.cellSize.height;
+          final cellWidth = widget.cellSize?.width;
+          final cellHeight = widget.cellSize?.height;
 
           return Padding(
-            padding: widget.padding,
+            padding: widget.padding!,
             child: Container(
               color: Colors.transparent,
               width: cellWidth,
-              height: cellHeight + (cellHeight * _animationController.value),
+              height: cellHeight! + (cellHeight * _animationController.value),
               child: Stack(
                 children: <Widget>[
                   ClipRRect(
                     borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(widget.borderRadius),
-                        topRight: Radius.circular(widget.borderRadius)),
+                        topLeft: Radius.circular(widget.borderRadius!),
+                        topRight: Radius.circular(widget.borderRadius!)),
                     child: Container(
                       width: cellWidth,
                       height: cellHeight,
-                      child: widget.innerWidget != null
-                          ? OverflowBox(
-                              minHeight: cellHeight,
-                              maxHeight: cellHeight * 2,
-                              alignment: Alignment.topCenter,
-                              child: ClipRect(
-                                child: Align(
-                                  heightFactor: 0.5,
-                                  alignment: Alignment.topCenter,
-                                  child: widget.innerWidget,
-                                ),
-                              ),
-                            )
-                          : widget.innerTopWidget,
+                      child: OverflowBox(
+                        minHeight: cellHeight,
+                        maxHeight: cellHeight * 2,
+                        alignment: Alignment.topCenter,
+                        child: ClipRect(
+                          child: Align(
+                            heightFactor: 0.5,
+                            alignment: Alignment.topCenter,
+                            child: widget.innerWidget,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                   Transform(
@@ -177,25 +140,23 @@ class SimpleFoldingCellState extends State<SimpleFoldingCell>
                       transform: Matrix4.rotationX(pi),
                       child: ClipRRect(
                         borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(widget.borderRadius),
-                            bottomRight: Radius.circular(widget.borderRadius)),
+                            bottomLeft: Radius.circular(widget.borderRadius!),
+                            bottomRight: Radius.circular(widget.borderRadius!)),
                         child: Container(
                           width: cellWidth,
                           height: cellHeight,
-                          child: widget.innerWidget != null
-                              ? OverflowBox(
-                                  minHeight: cellHeight,
-                                  maxHeight: cellHeight * 2,
-                                  alignment: Alignment.topCenter,
-                                  child: ClipRect(
-                                    child: Align(
-                                      heightFactor: 0.5,
-                                      alignment: Alignment.bottomCenter,
-                                      child: widget.innerWidget,
-                                    ),
-                                  ),
-                                )
-                              : widget.innerBottomWidget,
+                          child: OverflowBox(
+                            minHeight: cellHeight,
+                            maxHeight: cellHeight * 2,
+                            alignment: Alignment.topCenter,
+                            child: ClipRect(
+                              child: Align(
+                                heightFactor: 0.5,
+                                alignment: Alignment.bottomCenter,
+                                child: widget.innerWidget,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -209,8 +170,8 @@ class SimpleFoldingCellState extends State<SimpleFoldingCell>
                       opacity: angle >= 1.5708 ? 0.0 : 1.0,
                       child: ClipRRect(
                         borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(widget.borderRadius),
-                            topRight: Radius.circular(widget.borderRadius)),
+                            topLeft: Radius.circular(widget.borderRadius!),
+                            topRight: Radius.circular(widget.borderRadius!)),
                         child: Container(
                           width: angle >= 1.5708 ? 0.0 : cellWidth,
                           height: angle >= 1.5708 ? 0.0 : cellHeight,
@@ -228,13 +189,13 @@ class SimpleFoldingCellState extends State<SimpleFoldingCell>
 
   void toggleFold() {
     if (_isExpanded) {
-      if (widget.skipAnimation) {
+      if (widget.skipAnimation == true) {
         _animationController.value = 0;
       } else {
         _animationController.reverse();
       }
     } else {
-      if (widget.skipAnimation) {
+      if (widget.skipAnimation == true) {
         _animationController.value = 1;
       } else {
         _animationController.forward();

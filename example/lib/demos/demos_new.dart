@@ -43,16 +43,17 @@ class FoldingCellSimpleDemo extends StatelessWidget {
             ),
           ),
           Positioned(
-            right: 5,
-            bottom: 0,
-            child: FlatButton(
+            right: 10,
+            bottom: 10,
+            child: TextButton(
               onPressed: () => _foldingCellKey?.currentState?.toggleFold(),
               child: Text(
                 "OPEN",
               ),
-              textColor: Colors.white,
-              color: Colors.indigoAccent,
-              splashColor: Colors.white.withOpacity(0.5),
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.white,
+                minimumSize: Size(80, 40),
+              ),
             ),
           )
         ],
@@ -88,16 +89,17 @@ class FoldingCellSimpleDemo extends StatelessWidget {
             ),
           ),
           Positioned(
-            right: 5,
-            bottom: 0,
-            child: FlatButton(
+            right: 10,
+            bottom: 10,
+            child: TextButton(
               onPressed: () => _foldingCellKey?.currentState?.toggleFold(),
               child: Text(
                 "Close",
               ),
-              textColor: Colors.white,
-              color: Colors.indigoAccent,
-              splashColor: Colors.white.withOpacity(0.5),
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.white,
+                minimumSize: Size(80, 40),
+              ),
             ),
           ),
         ],
@@ -163,16 +165,17 @@ class FoldingCellMultipleCardsDemo extends StatelessWidget {
             ),
           ),
           Positioned(
-            right: 5,
-            bottom: 0,
-            child: FlatButton(
+            right: 10,
+            bottom: 10,
+            child: TextButton(
               onPressed: () => key?.currentState?.toggleFold(),
               child: Text(
                 "OPEN",
               ),
-              textColor: Colors.white,
-              color: Colors.indigoAccent,
-              splashColor: Colors.white.withOpacity(0.5),
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.white,
+                minimumSize: Size(80, 40),
+              ),
             ),
           )
         ],
@@ -208,16 +211,17 @@ class FoldingCellMultipleCardsDemo extends StatelessWidget {
             ),
           ),
           Positioned(
-            right: 5,
-            bottom: 0,
-            child: FlatButton(
+            right: 10,
+            bottom: 10,
+            child: TextButton(
               onPressed: () => key?.currentState?.toggleFold(),
               child: Text(
                 "Close",
               ),
-              textColor: Colors.white,
-              color: Colors.indigoAccent,
-              splashColor: Colors.white.withOpacity(0.5),
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.white,
+                minimumSize: Size(80, 40),
+              ),
             ),
           ),
         ],
@@ -270,9 +274,9 @@ class FoldingCellListViewDemo extends StatelessWidget {
                 ),
               ),
               Positioned(
-                right: 5,
-                bottom: 0,
-                child: FlatButton(
+                right: 10,
+                bottom: 10,
+                child: TextButton(
                   onPressed: () {
                     final foldingCellState = context
                         .findAncestorStateOfType<SimpleFoldingCellState>();
@@ -281,9 +285,10 @@ class FoldingCellListViewDemo extends StatelessWidget {
                   child: Text(
                     "OPEN",
                   ),
-                  textColor: Colors.white,
-                  color: Colors.indigoAccent,
-                  splashColor: Colors.white.withOpacity(0.5),
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    minimumSize: Size(80, 40),
+                  ),
                 ),
               )
             ],
@@ -323,9 +328,9 @@ class FoldingCellListViewDemo extends StatelessWidget {
                 ),
               ),
               Positioned(
-                right: 5,
-                bottom: 0,
-                child: FlatButton(
+                right: 10,
+                bottom: 10,
+                child: TextButton(
                   onPressed: () {
                     final foldingCellState = context
                         .findAncestorStateOfType<SimpleFoldingCellState>();
@@ -334,9 +339,10 @@ class FoldingCellListViewDemo extends StatelessWidget {
                   child: Text(
                     "Close",
                   ),
-                  textColor: Colors.white,
-                  color: Colors.indigoAccent,
-                  splashColor: Colors.white.withOpacity(0.5),
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    minimumSize: Size(80, 40),
+                  ),
                 ),
               ),
             ],
